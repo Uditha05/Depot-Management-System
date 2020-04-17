@@ -30,9 +30,7 @@
 	<link rel="stylesheet" type="text/css" href="view/css/main.css">
 	  
 	 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 	<meta charset="UTF-8">
 	
 	<style>
@@ -98,6 +96,10 @@
 				    <label for="formGroupExampleInput2">Password</label>
 				    <input type="password" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Password">
 				  </div>
+				  <div class="form-group">
+				  	<label for="formGroupExampleInput3">Show Password</label>
+				  	<input type="checkbox" id="showpass" style="width: 15px;height: 15px;margin-left: 10px;">
+				  </div>
 				
 				   <div class="form-group">
 	              <input type="submit" value="Login" name="login" class="btn btn-primary py-2 px-4">
@@ -109,6 +111,23 @@
 
 	</div>
 </header>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	
+<script>
+	$(document).ready(function(){
+		$('#showpass').click(function(){
+			if ($('#showpass').is(':checked')) {
+				$('#formGroupExampleInput2').attr('type','text');
+			}else{
+				$('#formGroupExampleInput2').attr('type','password');
+			}
+		});
+	});
+
+</script>
+
 </body>
 </html>
