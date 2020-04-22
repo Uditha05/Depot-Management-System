@@ -1,6 +1,6 @@
 <?php 
 	declare(strict_types = 1);
-	include '../includes/autoloader.inc.php';
+	#include 'includes/autoloader.inc.php';
  ?>
 
 
@@ -11,14 +11,13 @@
  	<title>Dashboard</title>
  </head>
  <body>
- 	<header>
- 		<h1>Welcome Mr./Mrs........</h1> 		
-
- 	</header>
+ 	<?php include "../../includes/header.inc.php" ?>
 
  	<main>
- 		
-
+ 		<h2>hello again</h2>
+		<?php 
+			header("location:../clerkView.php");
+		 ?>
  	</main>
 
 
