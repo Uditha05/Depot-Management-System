@@ -1,5 +1,7 @@
 <?php 
+
 include 'model/user.class.php';
+
 
 class UserCtrl extends User{
 	public $email;
@@ -20,7 +22,34 @@ class UserCtrl extends User{
 		if ($this->require_validity()) {
 
 			if ($this->can_login()) {
-				header("location:control/dashboardCtrl.php");
+				$result=$this->getResult();
+				print_r($result);
+				$_SESSION['userId'] = $result['id'];
+				$_SESSION['first_name'] = $result['first_name'];
+				$_SESSION['designation'] = $result['designation'];
+				
+				switch ($_SESSION['designation']) {
+					case 'transporter':
+						header("location:view/transporterView.php");
+						break;
+					case 'security':
+						header("location:view/securityView.php");
+						break;
+					case 'addmin':
+						header("location:view/addminView.php");
+						break;
+					case 'chashier':
+						header("location:view/cashierView.php");
+						break;
+					case 'clerk':
+						header("location:view/clerkView.php");
+						break;
+					default:
+						header("location:index.php?sessionError=yes");						
+						break;
+				}
+				
+
 			}
 			else{
 				$err = " Invalid User ";
@@ -36,7 +65,7 @@ class UserCtrl extends User{
 
 	public function can_login(){
 		$user1 = $this->getUser($this->email,$this->pwd);
-		if (!empty($user)) {
+		if (!empty($user1)) {
 			return true;
 		}
 		else{
@@ -58,40 +87,12 @@ class UserCtrl extends User{
 		}
 	}
 
+	public function getResult(){
+		$user2 = $this->getUser($this->email,$this->pwd);
+		return $user2;
+	}
 
 
 
 
-	// //check user name and password set
-	// public function is_setMethod(){
-				
-	// 	if (!isset($_POST['email']) || strlen($_POST['email'])<1) {
-	// 		$errors[] = "user name invalid";
-	// 	}if (!isset($_POST['password']) || strlen($_POST['password'])<1) {
-	// 		$errors[] = "password invalid";
-	// 	}
-	// }
-
-
-
-
-
-
-
-	// public function checkValid($email,$pwd){
-	// 	$user1 = $this->getUser($email,$pwd);
-
-	// 	if ($user1 != "erro") {
-	// 		$this->selectUser($user1);
-	// 	}
-	// 	else{
-	// 		$error = "Invalid User..!";
-	// 		// include 'includes/error.class.php';
-	// 		// $e = new Error($error);
-	// 	}
-	// }
-
-	// public function selectUser($user1){
-	// 	echo "string sucsessss";
-	// } 
-}
+}//end class

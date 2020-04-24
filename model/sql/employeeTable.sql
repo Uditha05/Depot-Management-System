@@ -23,38 +23,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userlist`
+-- Table structure for table `employee`
 --
 
-CREATE TABLE `userlist` (
+CREATE TABLE `employee` (
   `id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `startDate` varchar(12) NOT NULL,
   `designation` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(40) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `userlist`
+-- Dumping data for table `employee`
 --
+INSERT INTO `employee` (`id`, `first_name`, `last_name`, `startDate`, `designation`, `is_deleted`) VALUES
+(1,'kaml','santha','2004-04-05','conductor',0),
+(2,'naml','perera','2004-04-05','driver',0),
+(3,'amal','silva','2004-04-05','conductor',0),
+(4,'nimal','vas','2004-04-05','driver',0),
+(5,'sudath','dias','2004-04-05','engineer',0),
+(6,'kasun','siril','2004-04-05','worker',0);
 
 
-INSERT INTO `userlist` (`id`, `first_name`, `designation`, `email`, `password`, `is_deleted`) VALUES
-(1, 'Uditha', 'transporter', 'conductor@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(2, 'Tharinda', 'security', 'driver@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(4, 'Avishka', 'addmin', 'addmin@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(5, 'Sandaru', 'chashier', 'engineer@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(6, 'Kumari', 'clerk', 'worker@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d',0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `userlist`
+-- Indexes for table `employee`
 --
-ALTER TABLE `userlist`
+ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -62,9 +63,9 @@ ALTER TABLE `userlist`
 --
 
 --
--- AUTO_INCREMENT for table `userlist`
+-- AUTO_INCREMENT for table `employee`
 --
-ALTER TABLE `userlist`
+ALTER TABLE `employee`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

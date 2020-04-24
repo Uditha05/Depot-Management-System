@@ -1,10 +1,10 @@
 
 
-<header>
-	<div class="logged" style="background-color:red;"><h1>Welcome Idotha</h1>
+<header style="background :red;overflow: auto;">
+	<div><h1 style="float: left;">Welcome Idotha</h1>
 	
-		<span>123</span><a href="profile.php" style="float:right;">My Profile</a>
-		<span>124</span><a href="logout.php" style="float:right;">Log Out</a>
+		<a href="profile.php" style="float:right;">My Profile</a>
+		<a href="logout.php" style="float:right;">Log Out</a>
 	 
 		
 	</div>

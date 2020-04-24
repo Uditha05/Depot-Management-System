@@ -1,9 +1,9 @@
 <?php 
+	 session_start();
 	// declare(strict_types = 1);
 	 include 'control/userCtrl.php';
-	 // session_start();
- ?>
-
+	
+?>
 <?php 
 	
 	
@@ -64,7 +64,7 @@
 				This is S.Ltb user system.....lorjkjf.
 		    </p>
 		    <center>
-				 <a href="view/pages/passengerpage.php" class="btn btn-dark" role="button">View As Passenger>>></a>
+				 <a href="view/passengerpageView.php" class="btn btn-dark" role="button">View As Passenger>>></a>
 	
 		    </center>
 
@@ -82,9 +82,17 @@
 						if (isset($error_msg) && !empty($error_msg)) {
 								echo '<p style="background-color:red; padding-left:5px;">'.$error_msg.'</p>';
 							}
-						
 					 ?>
-
+					 <?php 
+						if (isset($_GET['logout'])) {
+								echo '<p style="background-color:green; padding-left:5px;">'.'You Have Successfuly Logout!'.'</p>';
+							}
+					 ?>
+					<?php 
+						if (isset($_GET['sessionError'])) {
+								echo '<p style="background-color:orenge; padding-left:5px;">'.'!!!Something Went Wrong!!!..Call to Engineer'.'</p>';
+							}
+					 ?>
 
 
 				<form action="index.php" method="post">
