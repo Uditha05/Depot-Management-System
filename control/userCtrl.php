@@ -20,7 +20,7 @@ class UserCtrl extends User{
 		if ($this->require_validity()) {
 
 			if ($this->can_login()) {
-				header("location:view/pages/dashboard.php");
+				header("location:control/dashboardCtrl.php");
 			}
 			else{
 				$err = " Invalid User ";
