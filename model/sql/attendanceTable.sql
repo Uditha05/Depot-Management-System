@@ -23,49 +23,45 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dutyTable`
+-- Table structure for table `attendance`
 --
 
-CREATE TABLE `dutyTable` (
+CREATE TABLE `attendance` (
+  `Pid`int NOT NULL ,
   `id` int(11) NOT NULL,
-  `busNo` varchar(40) NOT NULL,
-  `destination` varchar(50) NOT NULL,
-  `driver` varchar(100) NOT NULL,
-  `conductor` varchar(100) NOT NULL,
-  `dispathTime` TIME NOT NULL
+  `firstname` varchar(50) NOT NULL,
+  `attend` tinyint(1) NOT NULL,
+  `date` DATE NOT NULL,
+  `startTime` TIME(0) NOT NULL,
+  `endTime` TIME(0) NOT NULL,
+  `dailySalary` int(5) DEFAULT 0,
+  `OT` int(4) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dutyTable`
+-- Dumping data for table `attendance`
 --
-SELECT TIME_FORMAT("dispathTime", "%H:%I") FROM `dutyTable` ;
 
- INSERT INTO `dutyTable` (`id`, `busNo`, `destination`, `driver`, `conductor`,`dispathTime`) VALUES
- (1, 'NB22', 'panadura', 'Amal', 'saman','00:00');
--- (2, 'NB23', 'colombo', 'kamal', 'ranwa','00:00:00'),
--- (4, 'NB24', 'padukka', 'bimal', 'chamth','00:00:00'),
--- (5, 'NB25', 'kalutara', 'sunil', 'lanka','00:00:00'),
--- (6, 'NB26', 'meepe', 'ranga', 'silva');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `dutyTable`
+-- Indexes for table `attendance`
 --
-ALTER TABLE `dutyTable`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`Pid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `dutyTable`
+-- AUTO_INCREMENT for table `attendance`
 --
-ALTER TABLE `dutyTable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+ALTER TABLE `attendance`
+  MODIFY `Pid` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

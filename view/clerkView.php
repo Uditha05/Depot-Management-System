@@ -6,14 +6,16 @@ include "../control/clerkCtrl.php";
 		header("location:../index.php");
 	}
 
-	if (isset($_POST['add'])) {
-		$busNO = $_POST['busno'];
-		$destination = $_POST['destination'];
-		$driver = $_POST['driver'];
-		$conductor = $_POST['conductor'];
+	$clerkObj = new ClerkCtrl();
+	$buslis = $clerkObj->giveBus();
+	$routelis = $clerkObj->giveDesti();
 
-		$clerkObj = new ClerkCtrl();
-		$clerkObj->addNewDuty($busNO,$destination,$conductor,$driver);
+
+
+	if (isset($_POST['add'])) {
+		$feild = $_POST;
+		// print_r($feild);
+		$clerkObj->addNewDuty($feild);
 	}
 
 ?>
@@ -22,7 +24,7 @@ include "../control/clerkCtrl.php";
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/main.css">
+	
 	<title>Clerk Dashbord</title>
 </head>
 <body>
@@ -37,14 +39,36 @@ include "../control/clerkCtrl.php";
 	<main>
 
 		<h2>Add New Duty Record</h2>
+		<div>
+			<?php 
+				if (isset($_GET['error'])) {
+					if ($_GET['error']=='no') {
+						echo "<p>Add New Duty</p>";
+					}
+					else{
+						echo "<p>Sellect All Values</p>";
+					}
+					
+				}
+
+			 ?>
+	
+
+		</div>
 			<form action="clerkView.php" method="post" style="width:500px;margin-left: 200px;">
 			  <div class="form-group">
-			    <label for="formGroupExampleInput">BUS NO: </label>
-			    <input type="text" class="form-control" name="busno" id="busno" placeholder="Bus No">
+			    <label for="formGroupExampleInput">BUS ID: </label>
+			    	<select name="busno" id="" style="width:500px;">
+						<option value="0">Select Bus</option>
+						<?php echo $buslis; ?>	
+					</select>
 			  </div>
 			  <div class="form-group">
-			    <label for="formGroupExampleInput4">Destination</label>
-			    <input type="text" class="form-control" name="destination" placeholder="Destination">
+			    <label for="formGroupExampleInput">DESTINATION: </label>
+			    	<select name="desti" id="" style="width:500px;">
+						<option value="0">Select Destination</option>
+						<?php echo $routelis; ?>	
+					</select>
 			  </div>
 			  <div class="form-group">
 			    <label for="formGroupExampleInput2">Driver</label>
@@ -54,11 +78,18 @@ include "../control/clerkCtrl.php";
 			    <label for="formGroupExampleInput3">Conductor</label>
 			    <input type="text" class="form-control" name="conductor" placeholder="Conductor">
 			  </div>
+
+			  <div class="form-group">
+ 					<label for="appt">Select a Dispatch time:</label>
+  					<input type="time" id="appt" name="appt">
+			  </div>
 			   <div class="form-group">
-	             <input type="submit" value="addDuty" name="add" class="btn btn-primary py-2 px-4">
+	             <input type="submit" value="AddDuty" name="add" class="btn btn-primary py-2 px-4">
 	           </div>
 			</form>
 	
 	</main>
 </body>
 </html>
+
+

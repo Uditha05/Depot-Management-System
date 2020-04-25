@@ -17,13 +17,13 @@ class UserCtrl extends User{
 			'password' => $this->pwd
 		);
 	}
-
+	
+	//save user sesson and switch related view page
 	public function run_user(){
 		if ($this->require_validity()) {
 
 			if ($this->can_login()) {
 				$result=$this->getResult();
-				print_r($result);
 				$_SESSION['userId'] = $result['id'];
 				$_SESSION['first_name'] = $result['first_name'];
 				$_SESSION['designation'] = $result['designation'];
@@ -62,7 +62,7 @@ class UserCtrl extends User{
 		}
 	}
 
-
+	// function for validate user
 	public function can_login(){
 		$user1 = $this->getUser($this->email,$this->pwd);
 		if (!empty($user1)) {
@@ -73,7 +73,7 @@ class UserCtrl extends User{
 		}
 	}
 
-
+	// function for check empty fields
 	public function require_validity(){
 		$count = 0;
 		foreach ($this->field as $key => $value) {
@@ -87,6 +87,7 @@ class UserCtrl extends User{
 		}
 	}
 
+	// get user from data base
 	public function getResult(){
 		$user2 = $this->getUser($this->email,$this->pwd);
 		return $user2;
