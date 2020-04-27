@@ -9,16 +9,26 @@ class Clerk extends Dbh{
 		$sql = 'INSERT INTO dutytable(busNo,destination,driver,conductor,dispathTime) VALUES (?,?,?,?,?)';
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute([$busNo,$desti,$conductor,$driver,$disTime]);
-	
+		
+		$this->setAvaila($busNo);
 	}
 
+	// function to update bus table available value
+	protected function setAvaila($busNo){
+		$sql = 'UPDATE bustable SET availability = 1 WHERE busno = ?  LIMIT 1 ';
+		$stmt = $this->connection()->prepare($sql);
+		$stmt->execute([$busNo]);
+	}
 
-	// protected function getAttendence(){
-	// 	#return driver and conductor table
-	// }
-	// protected function getAvilableBus(){
-	// 	#return available bus no
-	// }
+	//function to get Driver & Conductor
+	protected function getCon_Driver(){
+		$sql = "SELECT firstname,attend,designation FROM attendance  INNER JOIN employee ON attendance.id = employee.id WHERE attend = 1";
+		$stmt = $this->connection()->prepare($sql);
+		$stmt->execute();
+
+		return $stmt;
+	}
+
 
 	// get available bus form bus table
 	protected function giveBusNO(){

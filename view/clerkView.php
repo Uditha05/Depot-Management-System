@@ -9,7 +9,8 @@ include "../control/clerkCtrl.php";
 	$clerkObj = new ClerkCtrl();
 	$buslis = $clerkObj->giveBus();
 	$routelis = $clerkObj->giveDesti();
-
+	$conlis = $clerkObj->giveConductor();
+	$driverlis = $clerkObj->giveDriver();
 
 
 	if (isset($_POST['add'])) {
@@ -71,13 +72,20 @@ include "../control/clerkCtrl.php";
 					</select>
 			  </div>
 			  <div class="form-group">
-			    <label for="formGroupExampleInput2">Driver</label>
-			    <input type="text" class="form-control" name="driver" placeholder="Driver">
+			    <label for="formGroupExampleInput">DRIVER: </label>
+			    	<select name="driver" id="" style="width:500px;">
+						<option value="0">Select Driver</option>
+						<?php echo $driverlis; ?>	
+					</select>
 			  </div>
 			  <div class="form-group">
-			    <label for="formGroupExampleInput3">Conductor</label>
-			    <input type="text" class="form-control" name="conductor" placeholder="Conductor">
+			    <label for="formGroupExampleInput">CONDUCTOR: </label>
+			    	<select name="conductor" id="" style="width:500px;">
+						<option value="0">Select Conductor</option>
+						<?php echo $conlis; ?>	
+					</select>
 			  </div>
+
 
 			  <div class="form-group">
  					<label for="appt">Select a Dispatch time:</label>

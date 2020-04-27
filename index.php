@@ -15,7 +15,7 @@
 		$pass = $_POST["password"];
 		$pwd = sha1($pass);
 
-		$userC = new UserCtrl($name,$pass);
+		$userC = new UserCtrl($name,$pwd);
 		$error_msg = $userC->run_user();	
 	}
 

@@ -21,24 +21,31 @@ class ClerkCtrl extends Clerk{
 		
 	}
 
-	// public function GiveConductor(){
-	// 	$opt = '';
-	// 	$out = $this->giveConductorName();
+	public function giveConductor(){
+		$opt = '';
+		$out = $this->getCon_Driver();
+		
+		while($row = $out->fetch()){
+				if ($row['designation'] == 'conductor') {
+					$opt.= "<option value=\"{$row['firstname']}\">{$row['firstname']}</option>";
+				}
+								
+		}	
+		return $opt;	
+	}
+	public function giveDriver(){
+		$opt = '';
+		$out = $this->getCon_Driver();
 
-	// 	while($row = $out->fetch()){
-	// 			$opt.= "<option value=\"{$row['firstname']}\">{$row['firstname']}</option>";				
-	// 	}	
-	// 	return $opt;	
-	// }
-	// public function GiveDriver(){
-	// 	$opt = '';
-	// 	$out = $this->giveDriverName();
+		while($row = $out->fetch()){
+				if ($row['designation'] == 'driver') {
+					$opt.= "<option value=\"{$row['firstname']}\">{$row['firstname']}</option>";
+				}
+								
+		}	
+		return $opt;	
+	}
 
-	// 	while($row = $out->fetch()){
-	// 			$opt.= "<option value=\"{$row['firstname']}\">{$row['firstname']}</option>";				
-	// 	}	
-	// 	return $opt;	
-	// }
 	public function giveBus(){
 		$opt = '';
 		$out = $this->giveBusNO();
