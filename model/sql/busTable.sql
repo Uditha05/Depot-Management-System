@@ -23,38 +23,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userlist`
+-- Table structure for table `bustable`
 --
 
-CREATE TABLE `userlist` (
+CREATE TABLE `bustable` (
   `id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `designation` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL
+  `busno` varchar(10) NOT NULL,
+  `addingdate` varchar(40) NOT NULL,
+  `availability` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `userlist`
+-- Dumping data for table `bustable`
 --
 
 
-INSERT INTO `userlist` (`id`, `first_name`, `designation`, `email`, `password`, `is_deleted`) VALUES
-(1, 'Uditha', 'transporter', 'conductor@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(2, 'Tharinda', 'security', 'driver@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(4, 'Avishka', 'addmin', 'addmin@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(5, 'Sandaru', 'chashier', 'engineer@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(6, 'Kumari', 'clerk', 'worker@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d',0);
+INSERT INTO `bustable` (`id`, `busno`, `addingdate`, `availability`) VALUES
+(1, 'NB20', '2000-03-12', 0),
+(2, 'NB21', '2000-03-12', 0),
+(4, 'NB23', '2000-03-12', 0),
+(5, 'NB24', '2000-03-12', 0),
+(6, 'NB25', '2000-03-12', 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `userlist`
+-- Indexes for table `bustable`
 --
-ALTER TABLE `userlist`
+ALTER TABLE `bustable`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -62,9 +60,9 @@ ALTER TABLE `userlist`
 --
 
 --
--- AUTO_INCREMENT for table `userlist`
+-- AUTO_INCREMENT for table `bustable`
 --
-ALTER TABLE `userlist`
+ALTER TABLE `bustable`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

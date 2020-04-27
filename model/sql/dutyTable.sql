@@ -23,38 +23,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userlist`
+-- Table structure for table `dutyTable`
 --
 
-CREATE TABLE `userlist` (
+CREATE TABLE `dutyTable` (
   `id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `designation` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `is_deleted` tinyint(1) NOT NULL
+  `busNo` varchar(40) NOT NULL,
+  `destination` varchar(50) NOT NULL,
+  `driver` varchar(100) NOT NULL,
+  `conductor` varchar(100) NOT NULL,
+  `dispathTime` TIME NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `userlist`
+-- Dumping data for table `dutyTable`
 --
+SELECT TIME_FORMAT("dispathTime", "%H:%I") FROM `dutyTable` ;
 
-
-INSERT INTO `userlist` (`id`, `first_name`, `designation`, `email`, `password`, `is_deleted`) VALUES
-(1, 'Uditha', 'transporter', 'conductor@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(2, 'Tharinda', 'security', 'driver@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(4, 'Avishka', 'addmin', 'addmin@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(5, 'Sandaru', 'chashier', 'engineer@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(6, 'Kumari', 'clerk', 'worker@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d',0);
+ INSERT INTO `dutyTable` (`id`, `busNo`, `destination`, `driver`, `conductor`,`dispathTime`) VALUES
+ (1, 'NB22', 'panadura', 'Amal', 'saman','00:00');
+-- (2, 'NB23', 'colombo', 'kamal', 'ranwa','00:00:00'),
+-- (4, 'NB24', 'padukka', 'bimal', 'chamth','00:00:00'),
+-- (5, 'NB25', 'kalutara', 'sunil', 'lanka','00:00:00'),
+-- (6, 'NB26', 'meepe', 'ranga', 'silva');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `userlist`
+-- Indexes for table `dutyTable`
 --
-ALTER TABLE `userlist`
+ALTER TABLE `dutyTable`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -62,9 +62,9 @@ ALTER TABLE `userlist`
 --
 
 --
--- AUTO_INCREMENT for table `userlist`
+-- AUTO_INCREMENT for table `dutyTable`
 --
-ALTER TABLE `userlist`
+ALTER TABLE `dutyTable`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
