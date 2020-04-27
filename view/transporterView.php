@@ -1,5 +1,9 @@
 <?php 
 session_start();
+include '../control/transportCtrl.php';
+
+	if (!isset($_SESSION['userId'])) {
+		header("location:../index.php");
  ?>
 
 
@@ -20,6 +24,19 @@ session_start();
 			<a href="logout.php" style="float:right;margin-top: 40px;">Log Out</a>		
 		</div>
 	</header>
+
+	<main>
+		<form action="clerkView.php" method="post" style="width:500px;margin-left: 200px;">
+			<div class="form-group">
+			    <label for="formGroupExampleInput">BUS ID: </label>
+			    	<select name="busno" id="" style="width:500px;">
+						<option value="0">Select Bus</option>
+							
+					</select>
+			 </div>
+		</form>
+
+	</main>
 	
 </body>
 </html>
