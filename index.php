@@ -1,25 +1,3 @@
-<?php 
-	// declare(strict_types = 1);
-	 include 'control/userCtrl.php';
-	 // session_start();
- ?>
-
-<?php 
-	
-	
-
-	//check for submit
-	if (isset($_POST['login'])) {
-		$error_msg = '';
-		$name = $_POST["email"];
-		$pass = $_POST["password"];
-		$pwd = sha1($pass);
-
-		$userC = new UserCtrl($name,$pass);
-		$error_msg = $userC->run_user();	
-	}
-
- ?>
 
 
 
@@ -40,7 +18,7 @@
 
 
 
-	<title>Login Page</title>
+	<title>Welcome SLTB</title>
 </head>
 <body>
 	
@@ -60,6 +38,61 @@
   </div>
 </nav>
   
+  <main>
+  	<div>
+			<h3 style="margin: 20px;padding-right: 20px;color: yellow;"> Find Your Way</h3>
+			  <form class="form-inline" action="#">
+			    <input class="form-control mr-sm-2" type="text" placeholder="Enter Your Destination" style="width: 500px;">
+			    <button class="btn btn-success" type="submit">Search</button>
+			  </form>
+  	</div>
+		<div class="container" style="margin-top: 10px;">
+		  <h2>Time Table Of Bus From Horana</h2>
+		  <p>All information according to daily routine.someday this will not corect</p>            
+		  <table class="table table-bordered">
+		    <thead>
+		      <tr>
+		        <th>Destination</th>
+		        <th>Start time</th>
+		        <th>End Time</th>
+		        <th>Current State</th>
+		        <th>Route</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>Panadura</td>
+		        <td>11.00am</td>
+		        <td>1.00pm</td>
+		        <td>dispatched</td>
+		        <td>Horana/Raigama/Bandaragama/Mahabellaana</td>
+		      </tr>
+		      <tr>
+		        <td>Panadura</td>
+		        <td>11.00am</td>
+		        <td>1.00pm</td>
+		        <td>Not Setoff</td>
+		        <td>Horana/Raigama/Bandaragama/Mahabellaana</td>
+		      </tr>
+		      <tr>
+		        <td>Panadura</td>
+		        <td>11.00am</td>
+		        <td>1.00pm</td>
+		        <td>No Today work</td>
+		        <td>Horana/Raigama/Bandaragama/Mahabellaana</td>
+		      </tr>
+		      <tr>
+		        <td>Panadura</td>
+		        <td>11.00am</td>
+		        <td>1.00pm</td>
+		        <td>dispatched</td>
+		        <td>Horana/Raigama/Bandaragama/Mahabellaana</td>
+		      </tr>
+
+		    </tbody>
+		  </table>
+		</div>	
+  </main>
 	
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

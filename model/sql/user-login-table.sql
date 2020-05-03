@@ -23,13 +23,13 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `userlist`
 --
 
 CREATE TABLE `userlist` (
   `id` int(11) NOT NULL,
   `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
+  `designation` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(40) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL
@@ -40,19 +40,19 @@ CREATE TABLE `userlist` (
 --
 
 
-INSERT INTO `userlist` (`id`, `first_name`, `last_name`, `email`, `password`, `is_deleted`) VALUES
-(1, 'Uditha', 'Isuranga', 'conductor@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(2, 'Tharinda', 'Kanda', 'driver@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(4, 'Avishka', 'Rathne', 'addmin@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(5, 'Sandaru', 'kaveesh', 'engineer@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(6, 'Kumari', 'Akka', 'worker@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d',0);
+INSERT INTO `userlist` (`id`, `first_name`, `designation`, `email`, `password`, `is_deleted`) VALUES
+(1, 'Uditha', 'transporter', 'transporter@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
+(2, 'Tharinda', 'security', 'security@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
+(4, 'Avishka', 'addmin', 'addmin@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
+(5, 'Sandaru', 'chashier', 'chashier@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
+(6, 'Isuranga', 'clerk', 'clerk@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `user`
+-- Indexes for table `userlist`
 --
 ALTER TABLE `userlist`
   ADD PRIMARY KEY (`id`);
@@ -62,7 +62,7 @@ ALTER TABLE `userlist`
 --
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `userlist`
 --
 ALTER TABLE `userlist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
