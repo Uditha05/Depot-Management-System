@@ -27,7 +27,7 @@ class UserCtrl extends User{
 				$_SESSION['userId'] = $result['id'];
 				$_SESSION['first_name'] = $result['first_name'];
 				$_SESSION['designation'] = $result['designation'];
-				
+	
 				switch ($_SESSION['designation']) {
 					case 'transporter':
 						header("location:../view/transporterView.php");
@@ -42,10 +42,10 @@ class UserCtrl extends User{
 						header("location:../view/cashierView.php");
 						break;
 					case 'clerk':
-						header("location:clerkView.php");
+						header("location:../view/clerkView.php");
 						break;
 					default:
-						header("location:../index.php?sessionError=yes");						
+						// header("location:../index.php?sessionError=yes");						
 						break;
 				}
 				

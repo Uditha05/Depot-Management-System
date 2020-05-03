@@ -11,13 +11,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 	
-	<style>
-			
-	</style>
-
-
-
-
 	<title>Welcome SLTB</title>
 </head>
 <body>
@@ -39,12 +32,12 @@
 </nav>
   
   <main>
-  	<div>
-			<h3 style="margin: 20px;padding-right: 20px;color: yellow;"> Find Your Way</h3>
-			  <form class="form-inline" action="#">
-			    <input class="form-control mr-sm-2" type="text" placeholder="Enter Your Destination" style="width: 500px;">
+  	<div class="row" style="margin-left: 30px;">			
+			<form class="form-inline" action="#">
+				<label for="" style="margin-right: 20px;">Find Your Way</label>
+			    <input class="form-control mr-sm-2" type="text" placeholder="Enter Your Destination" style="width: 300px;">
 			    <button class="btn btn-success" type="submit">Search</button>
-			  </form>
+			</form>			
   	</div>
 		<div class="container" style="margin-top: 10px;">
 		  <h2>Time Table Of Bus From Horana</h2>
