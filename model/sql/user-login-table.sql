@@ -41,19 +41,11 @@ CREATE TABLE `userlist` (
 
 
 INSERT INTO `userlist` (`id`, `first_name`, `designation`, `email`, `password`, `is_deleted`) VALUES
-<<<<<<< HEAD
 (1, 'Uditha', 'transporter', 'transporter@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
 (2, 'Tharinda', 'security', 'security@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
 (4, 'Avishka', 'addmin', 'addmin@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
 (5, 'Sandaru', 'chashier', 'chashier@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', 0),
 (6, 'Isuranga', 'clerk', 'clerk@mora.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8',0);
-=======
-(1, 'Uditha', 'transporter', 'conductor@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(2, 'Tharinda', 'security', 'driver@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(4, 'Avishka', 'addmin', 'addmin@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(5, 'Sandaru', 'chashier', 'engineer@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', 0),
-(6, 'Kumari', 'clerk', 'worker@mora.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d',0);
->>>>>>> 11517a8d77e3db796e976fbc02308f4aae5b6d7f
 
 --
 -- Indexes for dumped tables
