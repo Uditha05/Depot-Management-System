@@ -24,18 +24,13 @@ include "../control/clerkCtrl.php";
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	
 	<title>Clerk Dashbord</title>
 </head>
 <body>
-	<header style="background :#ff3333; overflow: auto;">
-		<div>
-			<h1 style="float: left;">Welcome <p><?php echo($_SESSION['first_name']) ; ?></p></h1>
-			<a href="profile.php" style="float:right;margin-top: 40px;">My Profile</a>
-			<a href="logout.php" style="float:right;margin-top: 40px;">Log Out</a>		
-		</div>
-	</header>
+<?php include '../includes/headerpart.inc.php'; ?>
 	
 	<main>
 
@@ -91,6 +86,7 @@ include "../control/clerkCtrl.php";
  					<label for="appt">Select a Dispatch time:</label>
   					<input type="time" id="appt" name="appt">
 			  </div>
+			  
 			   <div class="form-group">
 	             <input type="submit" value="AddDuty" name="add" class="btn btn-primary py-2 px-4">
 	           </div>

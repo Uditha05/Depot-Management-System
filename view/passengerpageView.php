@@ -2,15 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<meta charset="UTF-8">
 	<title>Horana Depot Time Table</title>
 </head>
 <body>
 	<header>
-		<div class="jumbotron" style="background-color: red; margin-bottom: 0px;" >
- 			 <h1>Welcome to Horana Depot</h1>	
- 			 <p>Panadura Road,Horana</p>
+		<div class="jumbotron" >
+ 			 <h1>Welcome Horana Depot</h1>
+  			<p>address...........</p>
 		</div>
 	</header>
 

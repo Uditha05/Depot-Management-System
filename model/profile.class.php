@@ -11,7 +11,6 @@ class Profile extends Dbh
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute([$userid]);
 		$result = $stmt->fetch();
-
 		return $result;
 	}
 	protected function updatePass($userid,$pass){
@@ -21,8 +20,7 @@ class Profile extends Dbh
 			header('location:../view/profile.php?change=ok');
 		}else{
 			header('location:../view/profile.php?change=no');
-		}
-				
+		}			
 	}
 
 }
