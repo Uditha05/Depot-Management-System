@@ -75,4 +75,34 @@ class ClerkCtrl extends Clerk{
 } 
 
 
+/**
+ * 
+ */
+class Duty extends DutySave
+{	
+	private $busid ;
+	private $routeid ;
+	private $timeid;
+	private $ticketbook;
+	private $driverid;
+	private $conductorid;
+	
+
+	public function __construct($busid,$routeid,$timeid,$ticketbook,$driverid,$conductorid)
+	{
+		$this->busid = $busid;
+		$this->routeid = $routeid;
+		$this->timeid= $timeid;
+		$this->ticketbook= $ticketbook;
+		$this->driverid = $driverid;
+		$this->conductorid = $conductorid;
+
+	}
+
+	public function saveDuty(){
+		$this->objSave($this->busid,$this->routeid,$this->timeid,,$this->ticketbook,$this->driverid,$this->conductorid);
+	}
+}
+
+
  ?>
