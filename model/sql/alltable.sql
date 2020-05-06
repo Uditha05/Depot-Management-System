@@ -50,6 +50,7 @@ CREATE TABLE route (
 CREATE TABLE timeTable ( 
     tid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
     routeid int,
+    status VARCHAR(15) DEFAULT 'Pending..',
     FOREIGN KEY(routeid) REFERENCES route(routeid),
     time TIME NOT NULL,
     day VARCHAR(15) NOT NULL
@@ -79,7 +80,9 @@ CREATE TABLE dutyRecord (
     conductorid int,
     FOREIGN KEY(conductorid) REFERENCES employee(empid),
     Date DATE NOT NULL,
+    ArrivedTime TIME NOT NULL,
     DispatchTime TIME NOT NULL,
+    dieselusage VARCHAR(20) DEFAULT '0',
     state VARCHAR(20) NOT NULL
 );
 

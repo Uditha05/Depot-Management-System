@@ -13,7 +13,12 @@ include '../control/transportCtrl.php';
 	$buslis1 = $transporterObj->getBusNo(true);
 	$buslis2 = $transporterObj->getBusNo(false);
 
-
+	if (isset($_POST['dispatch'])) {
+		$transporterObj->markDispatch($_POST['busno'],$_POST['diesel']);
+	}
+	if (isset($_POST['arrive'])) {
+		$transporterObj->markArrive($_POST['busno']);
+	}
 
 
  ?>
@@ -30,15 +35,27 @@ include '../control/transportCtrl.php';
 	<title>Transporter Page</title>
 </head>
 <body>
-<!-- 	<header style="background :#ff3333; overflow: auto;">
-		<div>
-			<h1 style="float: left;">Welcome <?php  ; ?></h1>
-			<a href="profile.php" style="float:right;margin-top: 40px;">My Profile</a>
-			<a href="logout.php" style="float:right;margin-top: 40px;">Log Out</a>		
-		</div>
-	</header> -->
-	<?php include '../includes/headerpart.inc.php'; ?>
 
+	<?php include '../includes/headerpart.inc.php'; ?>
+	<?php 
+		if (isset($_GET['mark'])) {
+			switch ($_GET['mark']) {
+				case 'not':
+					echo '<h3 style="background-color: red;">Plz Fill all field</h3>';
+					break;
+				case 'ok':
+					echo '<h3 style="background-color: green;">Marking is ok</h3>';
+					break;
+				
+				default:
+					echo '<h3 style="background-color: green;">Marking is not ok</h3>';
+					break;
+			}
+
+		}
+
+	 ?>
+	 
 	<main>
 		<div><h2>Marking Bus Depature</h2>
 		<form action="transporterView.php" method="post" style="width:500px;margin-left: 200px;">
@@ -49,14 +66,18 @@ include '../control/transportCtrl.php';
 						<?php echo $buslis2; ?>
 					</select>
 			 </div>
-			 <div class="form-group">
-	             <input type="submit" value="Dispatch" name="dispatch" class="btn btn-primary py-2 px-4">
-	         </div>
+			<div class="form-group">
+				    <label for="formGroupExampleInput">ENTER DIESEL: </label>
+					<input type="text" name="diesel">
+			</div>
+				 <div class="form-group">
+		             <input type="submit" value="Dispatch" name="dispatch" class="btn btn-primary py-2 px-4">
+		    	 </div>
 		</form>
 		</div>
 
 		<div><h2>Marking Bus Arrival</h2>
-		<form action="clerkView.php" method="post" style="width:500px;margin-left: 200px;">
+		<form action="transporterView.php" method="post" style="width:500px;margin-left: 200px;">
 			<div class="form-group">
 			    <label for="formGroupExampleInput">BUS ID: </label>
 			    	<select name="busno" id="" style="width:500px;">
@@ -64,6 +85,7 @@ include '../control/transportCtrl.php';
 						<?php echo $buslis1; ?>
 					</select>
 			 </div>
+	
 			 <div class="form-group">
 	             <input type="submit" value="Arrival" name="arrive" class="btn btn-primary py-2 px-4">
 	         </div>
