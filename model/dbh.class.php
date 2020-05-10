@@ -4,7 +4,7 @@ class Dbh{
 	private $host = "localhost";
 	private $user = "root";
 	private $pwd = "";
-	private $dbName = "logindb";
+	private $dbName = "mainsystemdb";
 
 
 	protected function connection(){
@@ -21,3 +21,4 @@ class Dbh{
 		return $pdo;
 	}
 }
+

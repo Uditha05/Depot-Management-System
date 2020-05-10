@@ -11,7 +11,8 @@ include "../control/clerkCtrl.php";
 	$routelis = $clerkObj->giveDesti();
 	$conlis = $clerkObj->giveConductor();
 	$driverlis = $clerkObj->giveDriver();
-
+	$ticketbooklist = $clerkObj->giveTicketBook();
+	$timeslot = $clerkObj->giveTimeslot();
 
 	if (isset($_POST['add'])) {
 		$feild = $_POST;
@@ -81,10 +82,21 @@ include "../control/clerkCtrl.php";
 					</select>
 			  </div>
 
+			  <div class="form-group">
+			    <label for="formGroupExampleInput">TICKET BOOK: </label>
+			    	<select name="ticketbook" id="" style="width:500px;">
+						<option value="0">Select Conductor</option>
+						<!-- <?php echo $conlis; ?>	 -->
+					</select>
+			  </div>
 
+			<label for="">Today is <?php echo date("l"); ?></label>
 			  <div class="form-group">
  					<label for="appt">Select a Dispatch time:</label>
-  					<input type="time" id="appt" name="appt">
+  					<select name="timeslot" id="" style="width:500px;">
+						<option value="0">Select Time</option>
+						<!-- <?php echo $timeslot; ?>	 -->
+					</select>
 			  </div>
 			  
 			   <div class="form-group">

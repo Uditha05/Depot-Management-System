@@ -40,9 +40,26 @@ class Clerk extends Dbh{
 
 	// function to get destination from route table
 	protected function giveDestination(){
-		$sql = 'SELECT destination FROM route';
+		$sql = 'SELECT RouteName,routeid FROM route';
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute();
+		return $stmt;
+	}
+
+	//function to get ticket book from ticket table
+	protected function giveTicketB(){
+		$sql = 'SELECT ticketbookid FROM ticketBook WHERE State = 1';
+		$stmt = $this->connection()->prepare($sql);
+		$stmt->execute();
+		return $stmt;
+	}
+
+	//function to get time slot from time slot
+	protected function giveTimeslot(){
+		$day = date("l");
+		$sql = 'SELECT tid,time FROM timeTable WHERE day = ? ';
+		$stmt = $this->connection()->prepare($sql);
+		$stmt->execute($day);
 		return $stmt;
 	}
 

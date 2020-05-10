@@ -50,10 +50,10 @@ CREATE TABLE route (
 CREATE TABLE timeTable ( 
     tid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
     routeid int,
-    status VARCHAR(15) DEFAULT 'Pending..',
     FOREIGN KEY(routeid) REFERENCES route(routeid),
-    time TIME NOT NULL,
-    day VARCHAR(15) NOT NULL
+    status VARCHAR(15) DEFAULT 'Pending..',
+    slotid int,
+    FOREIGN KEY(slotid) REFERENCES timeSlotTable(slotid)
 );
 
 CREATE TABLE ticketBook ( 
