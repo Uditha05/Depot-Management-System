@@ -13,9 +13,9 @@ SET time_zone = "+00:00";
 
 
 --
--- Database: `logindb`
+-- Database: `MainSystemdb`
 --
 
-CREATE DATABASE logindb;
+CREATE DATABASE MainSystemdb;
 
 

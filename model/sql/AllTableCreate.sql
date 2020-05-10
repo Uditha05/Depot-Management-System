@@ -51,9 +51,8 @@ CREATE TABLE timeTable (
     tid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
     routeid int,
     FOREIGN KEY(routeid) REFERENCES route(routeid),
-    status VARCHAR(15) DEFAULT 'Pending..',
-    slotid int,
-    FOREIGN KEY(slotid) REFERENCES timeSlotTable(slotid)
+    time TIME NOT NULL,
+    day VARCHAR(15) NOT NULL
 );
 
 CREATE TABLE ticketBook ( 
@@ -80,9 +79,7 @@ CREATE TABLE dutyRecord (
     conductorid int,
     FOREIGN KEY(conductorid) REFERENCES employee(empid),
     Date DATE NOT NULL,
-    ArrivedTime TIME NOT NULL,
     DispatchTime TIME NOT NULL,
-    dieselusage VARCHAR(20) DEFAULT '0',
     state VARCHAR(20) NOT NULL
 );
 

@@ -1,6 +1,6 @@
 <?php 
 
-include 'model/user.class.php';
+include '../model/user.class.php';
 
 
 class UserCtrl extends User{
@@ -27,25 +27,25 @@ class UserCtrl extends User{
 				$_SESSION['userId'] = $result['id'];
 				$_SESSION['first_name'] = $result['first_name'];
 				$_SESSION['designation'] = $result['designation'];
-				
+	
 				switch ($_SESSION['designation']) {
 					case 'transporter':
-						header("location:view/transporterView.php");
+						header("location:../view/transporterView.php");
 						break;
 					case 'security':
-						header("location:view/securityView.php");
+						header("location:../view/securityView.php");
 						break;
 					case 'addmin':
-						header("location:view/addminView.php");
+						header("location:../view/addminView.php");
 						break;
 					case 'chashier':
-						header("location:view/cashierView.php");
+						header("location:../view/cashierView.php");
 						break;
 					case 'clerk':
-						header("location:view/clerkView.php");
+						header("location:../view/clerkView.php");
 						break;
 					default:
-						header("location:index.php?sessionError=yes");						
+						// header("location:../index.php?sessionError=yes");						
 						break;
 				}
 				
