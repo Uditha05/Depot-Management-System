@@ -3,7 +3,7 @@ session_start();
 include '../control/transportCtrl.php';
 
 	if (!isset($_SESSION['userId'])) {
-		header("location:../index.php");
+		header("location:index.php");
 	}
  ?>
 
@@ -32,7 +32,10 @@ include '../control/transportCtrl.php';
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/transporter.css">
 	<title>Transporter Page</title>
+
+
 </head>
 <body>
 
@@ -57,18 +60,24 @@ include '../control/transportCtrl.php';
 	 ?>
 	 
 	<main>
+
+		<label class="switch">
+		  <input type="checkbox" id="toggler1" value="yes">
+		   <span class="slider round"></span>
+		</label>
+
 		<div><h2>Marking Bus Depature</h2>
 		<form action="transporterView.php" method="post" style="width:500px;margin-left: 200px;">
 			<div class="form-group">
 			    <label for="formGroupExampleInput">BUS ID: </label>
-			    	<select name="busno" id="" style="width:500px;">
+			    	<select name="busno" id="dis" style="width:500px;">
 						<option value="0">Select Bus</option>
-						<?php echo $buslis2; ?>
+						<?php echo $buslis1; ?>
 					</select>
 			 </div>
 			<div class="form-group">
-				    <label for="formGroupExampleInput">ENTER DIESEL: </label>
-					<input type="text" name="diesel">
+				    <label for="formGroupExampleInput">ENTER DIESEL(in litres): </label>
+					<input type="number" name="diesel" id="diesel">
 			</div>
 				 <div class="form-group">
 		             <input type="submit" value="Dispatch" name="dispatch" class="btn btn-primary py-2 px-4">
@@ -76,13 +85,21 @@ include '../control/transportCtrl.php';
 		</form>
 		</div>
 
+		
+		<label class="switch">
+		  <input type="checkbox" id="toggler2" value="yes">
+		   <span class="slider round"></span>
+		</label>
+
+
 		<div><h2>Marking Bus Arrival</h2>
+			
 		<form action="transporterView.php" method="post" style="width:500px;margin-left: 200px;">
 			<div class="form-group">
 			    <label for="formGroupExampleInput">BUS ID: </label>
-			    	<select name="busno" id="" style="width:500px;">
+			    	<select name="busno" id="arr" style="width:500px;">
 						<option value="0">Select Bus</option>
-						<?php echo $buslis1; ?>
+						<?php echo $buslis2; ?>
 					</select>
 			 </div>
 	
@@ -93,6 +110,15 @@ include '../control/transportCtrl.php';
 		</div>
 
 	</main>
+
+
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="js/transporter.js"></script>
+
 	
 </body>
 </html>

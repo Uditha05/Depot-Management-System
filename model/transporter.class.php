@@ -3,43 +3,37 @@ include 'dbh.class.php';
 class Transporter extends Dbh{
 
 	//
-	protected function getBusList(){
-		$sql = 'SELECT busNo FROM bustable WHERE status = "parking" ';
+	protected function getBusList($disP){
+
+		// $sql = 'SELECT busNo FROM bustable WHERE status = "parking" ';
+		if ($disP) {
+			$sql = 'SELECT dutyrecordnew.busid ,bus.numplate FROM dutyrecordnew INNER JOIN bus ON dutyrecordnew.busid = bus.busid WHERE dutyrecordnew.state = "wating"';
+		}else{
+			$sql = 'SELECT dutyrecordnew.busid ,bus.numplate FROM dutyrecordnew INNER JOIN bus ON dutyrecordnew.busid = bus.busid WHERE dutyrecordnew.state = "dispatched"';
+		}
+		
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute();
 		return $stmt;
 	}
 
 	protected function markDis($busno,$diesel){
-		$
-		$sql = 'UPDATE dutyRecord SET  ';
+		date_default_timezone_set("Asia/Colombo");
+		$timenow = date("H:i:s");
+		$sql = 'UPDATE dutyrecordnew SET state = "dispatched" , dieselusage = ? , DispatchTime = ? WHERE busid = ? AND state = "wating"';
 		$stmt = $this->connection()->prepare($sql);
-		$stmt->execute([$busno,$diesel]);
+		$stmt->execute([$diesel,$timenow,$busno]);
 
-		$this->setAvailablity($busno,true);
+
 	}
-	protected function markArrive($busno){
-		$sql = 'UPDATE ';
+	protected function markArr($busno){
+		$sql = 'UPDATE dutyrecordnew SET state = "Arrived"  WHERE busid = ? AND state = "dispatched" ';
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute([$busno]);
 
-		$this->setAvailablity($busno,false);
+		
 	}
 
-	protected function setAvailablity($busno,$dipatch){
-		if ($dipatch) {
-			$state = 'running'
-		}else{
-			$state = 'parking'
-		}
-		$sql = 'UPDATE ';
-		$stmt = $this->connection()->prepare($sql);
-		$stmt->execute([$busno,$state]);
-	}	
-	protected function updateTime($busno){
-		$sql = 'UPDATE ';
-		$stmt = $this->connection()->prepare($sql);
-		$stmt->execute([$busno]);
-	}
+
 
 }

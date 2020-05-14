@@ -3,9 +3,9 @@ session_start();
 include "../control/clerkCtrl.php";
 
 	if (!isset($_SESSION['userId'])) {
-		header("location:../index.php");
+		header("location:index.php");
 	}
-
+	
 	$clerkObj = new ClerkCtrl();
 	$buslis = $clerkObj->giveBus();
 	$routelis = $clerkObj->giveDesti();
@@ -16,7 +16,7 @@ include "../control/clerkCtrl.php";
 
 	if (isset($_POST['add'])) {
 		$feild = $_POST;
-		// print_r($feild);
+		 print_r($feild);
 		$clerkObj->addNewDuty($feild);
 	}
 
@@ -85,8 +85,8 @@ include "../control/clerkCtrl.php";
 			  <div class="form-group">
 			    <label for="formGroupExampleInput">TICKET BOOK: </label>
 			    	<select name="ticketbook" id="" style="width:500px;">
-						<option value="0">Select Conductor</option>
-						<!-- <?php echo $conlis; ?>	 -->
+						<option value="0">Select Ticketbook</option>
+						<?php echo $ticketbooklist; ?>	
 					</select>
 			  </div>
 
@@ -95,7 +95,7 @@ include "../control/clerkCtrl.php";
  					<label for="appt">Select a Dispatch time:</label>
   					<select name="timeslot" id="" style="width:500px;">
 						<option value="0">Select Time</option>
-						<!-- <?php echo $timeslot; ?>	 -->
+						<?php echo $timeslot; ?>	
 					</select>
 			  </div>
 			  

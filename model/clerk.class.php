@@ -5,24 +5,44 @@ include 'dbh.class.php';
 class Clerk extends Dbh{
 
 	//function to add duty record in table
-	protected function addDuty($busNo,$desti,$conductor,$driver,$disTime){
-		$sql = 'INSERT INTO dutytable(busNo,destination,driver,conductor,dispathTime) VALUES (?,?,?,?,?)';
-		$stmt = $this->connection()->prepare($sql);
-		$stmt->execute([$busNo,$desti,$conductor,$driver,$disTime]);
+	protected function addDuty($busNO,$destination,$conductor,$driver,$ticket,$timeslot){
+		$today = date("Y-m-d");
 		
-		$this->setAvaila($busNo);
+		$sql = 'INSERT INTO dutyRecordNew (busid,routeid,slotid,ticketbookid,driverid,conductorid,Date) VALUES (?,?,?,?,?,?,?)';
+		$stmt = $this->connection()->prepare($sql);
+		$stmt->execute([$busNO,$destination,$timeslot,$ticket,$driver,$conductor,$today]);
+		
+		$this->setAvaila($busNO);
+		$this->setDriver_ConductorAvai($driver);
+		$this->setDriver_ConductorAvai($conductor);
+		$this->setTicketBookAvai($ticket);
+
 	}
 
 	// function to update bus table available value
-	protected function setAvaila($busNo){
-		$sql = 'UPDATE bustable SET availability = 1 WHERE busno = ?  LIMIT 1 ';
+	protected function setAvaila($busNO){
+		$sql = 'UPDATE bus SET State = "running" WHERE busid = ?  LIMIT 1 ';
 		$stmt = $this->connection()->prepare($sql);
-		$stmt->execute([$busNo]);
+		$stmt->execute([$busNO]);
+	}
+
+	//function to set driver and conductor unable
+	protected function setDriver_ConductorAvai($empid){
+		$sql = 'UPDATE attendencerecord SET available = 0 WHERE empid = ?  LIMIT 1 ';
+		$stmt = $this->connection()->prepare($sql);
+		$stmt->execute([$empid]);
+	}
+	//function to set ticketbook unable
+	protected function setTicketBookAvai($ticketbookid){
+		$sql = 'UPDATE ticketBook SET State = "unavailable" WHERE ticketbookid = ?  LIMIT 1 ';
+		$stmt = $this->connection()->prepare($sql);
+		$stmt->execute([$ticketbookid]);
 	}
 
 	//function to get Driver & Conductor
 	protected function getCon_Driver(){
-		$sql = "SELECT firstname,attend,designation FROM attendance  INNER JOIN employee ON attendance.id = employee.id WHERE attend = 1";
+		$sql = "SELECT employee.empid, employee.FirstName,employee.Designation ,attendencerecord.available FROM employee INNER JOIN attendencerecord ON employee.empid = attendencerecord.empid WHERE attendencerecord.available = 1" ;
+	
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute();
 
@@ -32,7 +52,7 @@ class Clerk extends Dbh{
 
 	// get available bus form bus table
 	protected function giveBusNO(){
-		$sql = 'SELECT busno FROM bustable WHERE availability = 0';
+		$sql = 'SELECT busid,numplate FROM bus WHERE State = "parking"';
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute();
 		return $stmt;
@@ -48,18 +68,19 @@ class Clerk extends Dbh{
 
 	//function to get ticket book from ticket table
 	protected function giveTicketB(){
-		$sql = 'SELECT ticketbookid FROM ticketBook WHERE State = 1';
+		$sql = 'SELECT ticketbookid FROM ticketBook WHERE State = "available"';
 		$stmt = $this->connection()->prepare($sql);
 		$stmt->execute();
 		return $stmt;
 	}
 
 	//function to get time slot from time slot
-	protected function giveTimeslot(){
+	protected function giveTimes(){
 		$day = date("l");
-		$sql = 'SELECT tid,time FROM timeTable WHERE day = ? ';
+
+		$sql = 'SELECT slotid,time FROM timeslottable WHERE day = ?';
 		$stmt = $this->connection()->prepare($sql);
-		$stmt->execute($day);
+		$stmt->execute([$day]);
 		return $stmt;
 	}
 

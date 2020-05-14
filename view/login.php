@@ -13,8 +13,9 @@
 		$error_msg = '';
 		$name = $_POST["email"];
 		$pass = $_POST["password"];
+		echo $pass;
 		$pwd = sha1($pass);
-		echo $pwd;
+		//echo $pwd;
 		$userC = new UserCtrl($name,$pwd);
 		$error_msg = $userC->run_user();	
 	}
@@ -34,18 +35,40 @@
 	<header>
 		
 	</header>
+
+	<nav class="navbar navbar-inverse" style="border-radius: 0px;">
+	  <div class="container-fluid">
+
+	    <ul class="nav navbar-nav">
+	      <li class=""><a href="index.php">Home</a></li>
+	      <li ><a href="timeTable.php">Time Table</a></li>
+	      <li><a href="#">Contact us</a></li>
+	    </ul>
+
+	  </div>
+	</nav>
+  
 	<main>
 	        <div class="login col-12 col-md-6" style="margin-top: 20px;">
 
 	        	<br>
 	        	<h4>User Login:</h4>
+
 					<?php 
 						if (isset($error_msg) && !empty($error_msg)) {
 								echo '<p style="background-color:red; padding-left:5px;">'.$error_msg.'</p>';
 							}
-						
 					 ?>
-
+					 <?php 
+						if (isset($_GET['logout'])) {
+								echo '<p style="background-color:green; padding-left:5px;">'.'You Have Successfuly Logout!'.'</p>';
+							}
+					 ?>
+					<?php 
+						if (isset($_GET['sessionError'])) {
+								echo '<p style="background-color:orenge; padding-left:5px;">'.'!!!Something Went Wrong!!!..Call to Engineer'.'</p>';
+							}
+					 ?>
 
 				<form action="login.php" method="post">
 				  <div class="form-group">

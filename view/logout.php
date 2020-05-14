@@ -6,7 +6,7 @@
 	}
 
 	session_destroy();
-	header('Location: ../index.php?logout=yes');
+	header('Location: login.php?logout=yes');
 
 
  ?>

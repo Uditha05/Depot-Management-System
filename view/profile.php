@@ -41,8 +41,8 @@ include '../control/profileCtrl.php' ;
 	<header style="background :#ff3333; overflow: auto;">
 		<div>
 			<h1 style="float: left;">Welcome <?php echo($_SESSION['first_name']) ; ?></h1>
-			<!-- <a href="profile.php" style="float:right;margin-top: 40px;">My Profile</a> -->
-			<a href="logout.php" style="float:right;margin-top: 40px;">Log Out</a>		
+			<a href="logout.php" style="float:right;margin-top: 40px;"><i class="fa fa-power-off" aria-hidden="true"></i>Log Out</a>	
+			<span onclick="history.back()" style="float:right;margin-top: 40px;margin-right: 5px;"><i class="fa fa-backward" aria-hidden="false"></i></span>
 		</div>
 	</header>
 	<main>

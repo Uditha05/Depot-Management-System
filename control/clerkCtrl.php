@@ -12,13 +12,14 @@ class ClerkCtrl extends Clerk{
 			header('location:../view/clerkView.php?error=yes');
 		}
 		else{
+			
 			$busNO = $feild['busno'];
 			$destination = $feild['desti'];
 			$driver = $feild['driver'];
 			$conductor = $feild['conductor'];
-			$ticket = $ticket['ticketbook'];
+			$ticket = $feild['ticketbook'];
 			$timeslot = $feild['timeslot'];
-			$this->addDuty($busNO,$destination,$conductor,$driver,$disTime);
+			$this->addDuty($busNO,$destination,$conductor,$driver,$ticket,$timeslot);
 			header('location:../view/clerkView.php?error=no');
 		}
 		
@@ -28,9 +29,11 @@ class ClerkCtrl extends Clerk{
 	public function giveConductor(){
 		$opt = '';
 		$out = $this->getCon_Driver();
-		
+
 		while($row = $out->fetch()){
-				if ($row['designation'] == 'conductor') {
+			
+				if ($row['Designation'] == 'conductor') {
+
 					$opt.= "<option value=\"{$row['empid']}\">{$row['FirstName']}</option>";
 				}
 								
@@ -44,7 +47,7 @@ class ClerkCtrl extends Clerk{
 		$out = $this->getCon_Driver();
 
 		while($row = $out->fetch()){
-				if ($row['designation'] == 'driver') {
+				if ($row['Designation'] == 'driver') {
 					$opt.= "<option value=\"{$row['empid']}\">{$row['FirstName']}</option>";
 				}
 								
@@ -58,7 +61,7 @@ class ClerkCtrl extends Clerk{
 		$out = $this->giveBusNO();
 
 		while($row = $out->fetch()){
-				$opt.= "<option value=\"{$row['busid']}\">{$row['busid']}</option>";				
+				$opt.= "<option value=\"{$row['busid']}\">{$row['numplate']}</option>";				
 		}	
 		return $opt;	
 	}
@@ -69,7 +72,7 @@ class ClerkCtrl extends Clerk{
 		$out = $this->giveTicketB();
 
 		while($row = $out->fetch()){
-				$opt.= "<option value=\"{$row['ticketbookid']}\">{$row['tiketbookid']}</option>";				
+				$opt.= "<option value=\"{$row['ticketbookid']}\">{$row['ticketbookid']}</option>";				
 		}	
 		return $opt;	
 	}
@@ -79,7 +82,7 @@ class ClerkCtrl extends Clerk{
 		$opt = '';
 		$out = $this->giveDestination();
 		while($row = $out->fetch()){
-				$opt.= "<option value=\"{$row['routeid']}\">{$row['RoutrName']}</option>";				
+				$opt.= "<option value=\"{$row['routeid']}\">{$row['RouteName']}</option>";				
 		}	
 		return $opt;	
 	}
@@ -87,10 +90,12 @@ class ClerkCtrl extends Clerk{
 	//give correct time slot 
 	public function giveTimeslot(){
 		$opt = '';
-		$out = $this->giveTime();
+
+		$out = $this->giveTimes();
 		while($row = $out->fetch()){
-				$opt.= "<option value=\"{$row['tid']}\">{$row['time']}</option>";				
-		}	
+				$opt.= "<option value=\"{$row['slotid']}\">{$row['time']}</option>";				
+		}
+		
 		return $opt;	
 	}
 
@@ -106,34 +111,34 @@ class ClerkCtrl extends Clerk{
 } 
 
 
-/**
- * 
- */
-class Duty extends DutySave
-{	
-	private $busid ;
-	private $routeid ;
-	private $timeid;
-	private $ticketbook;
-	private $driverid;
-	private $conductorid;
+// /**
+//  * 
+//  */
+// class Duty extends DutySave
+// {	
+// 	private $busid ;
+// 	private $routeid ;
+// 	private $timeid;
+// 	private $ticketbook;
+// 	private $driverid;
+// 	private $conductorid;
 	
 
-	public function __construct($busid,$routeid,$timeid,$ticketbook,$driverid,$conductorid)
-	{
-		$this->busid = $busid;
-		$this->routeid = $routeid;
-		$this->timeid= $timeid;
-		$this->ticketbook= $ticketbook;
-		$this->driverid = $driverid;
-		$this->conductorid = $conductorid;
+// 	public function __construct($busid,$routeid,$timeid,$ticketbook,$driverid,$conductorid)
+// 	{
+// 		$this->busid = $busid;
+// 		$this->routeid = $routeid;
+// 		$this->timeid= $timeid;
+// 		$this->ticketbook= $ticketbook;
+// 		$this->driverid = $driverid;
+// 		$this->conductorid = $conductorid;
 
-	}
+// 	}
 
-	public function saveDuty(){
-		$this->objSave($this->busid,$this->routeid,$this->timeid,$this->ticketbook,$this->driverid,$this->conductorid);
-	}
-}
+// 	public function saveDuty(){
+// 		$this->objSave($this->busid,$this->routeid,$this->timeid,$this->ticketbook,$this->driverid,$this->conductorid);
+// 	}
+// }
 
 
  ?>

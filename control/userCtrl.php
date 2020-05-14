@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include '../model/user.class.php';
 
 
@@ -12,10 +12,6 @@ class UserCtrl extends User{
 	public function __construct($email,$password){
 		$this->email = $email;
 		$this->pwd = $password;
-		$this->field = array(
-			'email' => $this->email,
-			'password' => $this->pwd
-		);
 	}
 	
 	//save user sesson and switch related view page
@@ -23,26 +19,28 @@ class UserCtrl extends User{
 		if ($this->require_validity()) {
 
 			if ($this->can_login()) {
+
 				$result=$this->getResult();
+				print_r($result);
 				$_SESSION['userId'] = $result['id'];
 				$_SESSION['first_name'] = $result['first_name'];
 				$_SESSION['designation'] = $result['designation'];
-	
+				
 				switch ($_SESSION['designation']) {
 					case 'transporter':
-						header("location:../view/transporterView.php");
+						header("location: transporterView.php");
 						break;
 					case 'security':
-						header("location:../view/securityView.php");
+						header("location: securityView.php");
 						break;
 					case 'addmin':
-						header("location:../view/addminView.php");
+						header("location: addminView.php");
 						break;
 					case 'chashier':
-						header("location:../view/cashierView.php");
+						header("location: cashierView.php");
 						break;
 					case 'clerk':
-						header("location:../view/clerkView.php");
+						header('location: clerkView.php');
 						break;
 					default:
 						// header("location:../index.php?sessionError=yes");						
@@ -75,17 +73,17 @@ class UserCtrl extends User{
 
 	// function for check empty fields
 	public function require_validity(){
-		$count = 0;
-		foreach ($this->field as $key => $value) {
-			if (empty($value)) {
-				return false;
-			}
+		if (empty($this->email)) {
+			return false;
 		}
-		if ($count == 0) {
+		else if(empty($this->pwd)){
+			return false;
+		}
+		else{
 			return true;
-		
-		}
+		}		
 	}
+
 
 	// get user from data base
 	public function getResult(){
