@@ -9,7 +9,7 @@
       </tr>
      </thead>";
     if ($_GET['q'] != "") {
-      $cashierObj = new CashierContrl();
+      $cashierObj = new CashierControl();
       $results = $cashierObj->showSelectedDutyRecords($_GET['q']);
       $did = 0;
       foreach ($results as $row){
@@ -26,7 +26,7 @@
       }
 
     }else {
-      $cashierObj = new CashierContrl();
+      $cashierObj = new CashierControl();
       $results = $cashierObj->showDutyRecords();
       $did = 0;
       foreach ($results as $row){

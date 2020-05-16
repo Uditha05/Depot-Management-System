@@ -3,7 +3,7 @@
  /**
   *
   */
- class CashierContrl extends Cashier
+ class CashierControl extends Cashier
  {
 
    public function showRoutes()
