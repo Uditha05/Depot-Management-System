@@ -1,23 +1,22 @@
-<?php 
+<?php
+/**
+ *
+ */
+class Dbh
+{
 
-class Dbh{
-	private $host = "localhost";
-	private $user = "root";
-	private $pwd = "";
-	private $dbName = "mainsystemdb";
+  private $servername = "localhost";
+  private $dbUsername = "root";
+  private $dbPassword = "";
+  private $dbName = "depot management system";
 
+  protected function connect()
+  {
 
-	protected function connection(){
-		//set DSN
-		$dsn = 'mysql:host='.$this->host.';dbname='.$this->dbName;
-
-		//create pdo instance
-		$pdo = new PDO($dsn,$this->user,$this->pwd);
-
-		// set default fetch mode
-		$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-
-		// return customise PDO object
-		return $pdo;
-	}
+    $dsn = 'mysql:host=' . $this->servername . ';dbname=' . $this->dbName;
+    $pdo = new PDO($dsn, $this->dbUsername, $this->dbPassword);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $pdo;
+    }
 }
+?>
