@@ -4,7 +4,7 @@
     if ($_GET['q'] == "default") {
       echo "<input type=\"text\" id=\"tktnum\" name=\"tktnum\" disabled value=\"\">";
     }else {
-      $cashierObj = new CashierContrl();
+      $cashierObj = new CashierControl();
       $results = $cashierObj->showSelectedtktbook($_GET['q']);
       foreach ($results as $row){
         echo "<input type=\"text\" id=\"tktnum\" name=\"tktnum\" disabled value=\"{$row['CurruntNumber']}\">";

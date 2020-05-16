@@ -9,16 +9,16 @@ function myAutoLoader($className){
   if(strpos($url,'view') !== false){
     if(strpos(strtolower($className),'view') !== false){
       $path = '../view/';
-    }else if (strrpos(strtolower($className),'contrl') !== false) {
-      $path = '../contrl/';
+    }else if (strrpos(strtolower($className),'control') !== false) {
+      $path = '../control/';
     }else {
       $path = '../model/';
     }
   }else{
     if(strpos(strtolower($className),'view') !== false){
       $path = '../view/';
-    }else if (strrpos(strtolower($className),'contrl') !== false) {
-      $path = '../contrl/';
+    }else if (strrpos(strtolower($className),'control') !== false) {
+      $path = '../control/';
     }else {
       $path = '../model/';
     }

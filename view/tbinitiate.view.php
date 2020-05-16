@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="description" content="Initiating ticket book for a duty record.">
     <meta name="viewport" content="width-device-width, initial-scaled=1">
-    <link rel="stylesheet" href="../includes/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>
       Initiate Ticket Book
     </title>
@@ -58,7 +58,7 @@
                         </tr>
                     </thead>
                     <?php
-                      $cashierObj = new CashierContrl();
+                      $cashierObj = new CashierControl();
                       $results = $cashierObj->showDutyRecords();
                       foreach ($results as $row){
                         echo "<tr onclick=\"displyselectrec( {$row['dutyid']} )\">
@@ -96,7 +96,7 @@
                         <select id="tktbknum" name="tktbknum" onchange="shownumoftkts(this.value)">
                           <option value="default">Select a Ticket book</option>
                           <?php
-                            $cashierObj = new CashierContrl();
+                            $cashierObj = new CashierControl();
                             $results = $cashierObj->showTktBooks();
                             foreach ($results as $row){
                               echo "<option value=\"{$row['ticketbookid']}\">{$row['ticketbookid']}</option>";
