@@ -2,7 +2,7 @@
   include 'class-autoload.inc.php';
 
   if ($_GET['r'] != "") {
-    $cashierObj = new CashierContrl();
+    $cashierObj = new CashierControl();
     $result = $cashierObj->showSelectedDutyRecordbyid($_GET['r']);
 
     echo "<div id=\"recordDiv\" value=\"{$result[0]['dutyid']}\"><p>Plate Number : {$result[0]['busid']}<br>
