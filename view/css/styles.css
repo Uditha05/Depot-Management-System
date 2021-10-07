@@ -4,50 +4,131 @@
     box-sizing: border-box;
 }
 
-h1{
-    text-align:center;
-}
-
 body{
     font-family: "Montserrat-Regular";
-    color: #fff;
+    color: #5f5a5a;
     font-size: 15px;
     margin: 0;
-}
-
-#dutyrecordtable tbody tr:nth-of-type(even) {
-    background-color: #9dbbf540;
-}
-
-#dutyrecordtable tbody tr:hover {
-    cursor:default;
-    background-color:#9dbbf5;
-    transition: all .30s ease-in-out;
-}
-
-div#tktnumdiv {
-    display: flex;
-}
-
-.wrapper {
+    display: grid;
+    grid-template-rows: 73.6px 1fr 171.200px;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background: url("../img/cashier-background.jpg") no-repeat;
+    background: #d3e5e5;
     background-size: cover;
 }
 
+
+input:focus{
+  outline: none;
+}
+
+.pageButton{
+  border: 2px solid #564f4f;
+  margin: auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  background: #b3bab8;
+  color: #191616;
+  font-size: large;
+  text-transform: uppercase;
+  font-family: "Montserrat-SemiBold";
+  align-items: center;
+}
+
+.pageButton:hover{
+  border-color: transparent;
+  background-color: #6f8284;
+  transition: all .5s cubic-bezier(0, 0, 0.11, 1.08);
+}
+
+
+#submit-button {
+	width: 162px;
+	height: 51px;
+	margin-top: 20px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    background: #d3e5e5;
+    background-size: cover;
+    grid-row: 2;
+}
+
+input#tktnum {
+    width: 99px;
+}
+
+/* cashierMenueView styles */
+
+.indexinner{
+	font-size: 24px;
+    font-family: monospace;
+    margin: auto;
+}
+
+.menuebutton{
+	height: 119px;
+	width: 273px;
+	background-color: #b3bab8;
+	border: 5px solid rgb(104 120 132 / 72%);
+	margin: 27px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.menuebutton:hover {
+		border-color: transparent;
+		background-color:#8ba5a9;
+		transition: all .5s cubic-bezier(0, 0, 0.11, 1.08);
+}
+
+.menuetitle{
+	color: #070707!important;
+	text-decoration: none;
+	width: inherit;
+	height: inherit;
+  padding: 46px 21px;
+  font-size: 20px;
+}
+
+.menuetitle:hover{
+  text-decoration: none;
+}
+/* tbInitiateView & dutyRecordCloseView Styles*/
+
 .inner {
+    min-width: 683px;
     max-width: 758px;
     margin: auto;
-    background: #39459b;
-    border: 10px solid #0d99d7;
+    background: #dadce6;
+    border: 10px solid #989b9c;
     padding: 30px 99px 45px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
     -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+h1{
+    text-align:center;
+}
+
+div label{
+    font-size: 22px;
+    padding: 0px 13px;
+}
+
+#dutyrecordtable tbody tr:nth-of-type(even) {
+    background-color: #64728c40;
+}
+
+#dutyrecordtable tbody tr:hover {
+    cursor:default;
+    background-color:#9da8bc;
+    transition: all .30s ease-in-out;
 }
 
 #dutyrecordtable{
@@ -61,7 +142,7 @@ div#tktnumdiv {
 }
 
 #dutyrecordtable thead tr{
-    background-color: #6ec3fca6;
+    background-color: #3c3f41a6;
     text-align: left;
     color: white;
 }
@@ -71,48 +152,63 @@ div#tktnumdiv {
 }
 
 #dutyrecordtable tbody tr {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #797474;
 }
 
 #dutyrecordtable tbody tr:last-of-type {
     border-bottom: 3px solid #82c3ffa1;
 }
 
+#tktnumdiv {
+    display: flex;
+    padding: 0px 0px;
+}
+
+#tktbknumdiv{
+    display: flex;
+    padding: 0px 0px;
+}
+
+#cashamountdiv{
+    display: flex;
+}
+
 div input{
     border: none;
-    border-bottom: 2px solid #00ade6;
+    border-bottom: 2px solid #bfc5cc;
     display: block;
     height: 26px;
     font-size: 19px;
     background: none;
     font-family: "Montserrat-SemiBold";
-    color: white;
+    color: #413a3a;
+    text-align: center;
 }
 
-#searchbox{
-
+.tktbkinput{
+    width: 100px;
 }
 
-div label{
-    font-size: 22px;
-    padding: 0px 13px;
+#chngbtn{
+  margin: 0;
+  height: 36px;
 }
+
+#err,#recordDiv{
+    text-align: center;
+    color: #173051;
+    font-size: 20px;
+}
+
+
+/* tbInitiateView styles */
 
 #enternamediv{
     display: flex;
 }
 
-#tktbknumslt{
-    margin: 11px 55px 16px 0px;
-}
-
-#tktnum{
-    margin: 11px 0px 16px 3px;
-    width: 100px;
-}
-
 #tktbknum{
-    background: #0072cf7a;
+    background: #bfc5cc;
     color: #fff;
     padding: 5px;
     width: 190px;
@@ -124,58 +220,245 @@ div label{
     outline: none;
 }
 
-button {
-	border: none;
-	width: 162px;
-	height: 51px;
-	border: 2px solid #fff;
-	margin: auto;
-	margin-top: 20px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	padding: 0;
-	background: none;
-	color: #fff;
-	font-size:large;
-	text-transform: uppercase;
-	font-family: "Montserrat-SemiBold";
-}
-
-button:hover {
-		border-color: transparent;
-		background-color:#9dbbf5;
-		transition: all .5s cubic-bezier(0, 0, 0.11, 1.08);
-}
-
-#err,#recordDiv{
-    text-align: center;
-    color: #00cdff;
-    font-size: 20px;
-}
-
-.indexinner{
-	font-size: 24px;
-    font-family: monospace;
+#tktnumtxt{
     margin: auto;
 }
 
-ul{
-	list-style: none;
+.Popup-login {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0,0,0,0.7);
+    position: absolute;
+    top: 0;
     display: flex;
-    padding-left: 0px;
-}
-
-.menuebutton{
-	height: 119px;
-    width: 273px;
-	background-color: #2564af;
-	border: 5px solid rgba(1, 146, 255, 0.72);
-	margin: 25px;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 
 
-a{
-	color: white;
-    text-decoration: none;
+.Popup-login-content {
+    background-color: white;
+    width: 500px;
+    height: 355px;
+    border: 4px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-radius: 16px;
 }
+
+.login-input {
+    border: 1px solid #959595;
+    display: block;
+    height: 26px;
+    font-size: 17px;
+    background: none;
+    font-family: "Montserrat-SemiBold";
+    text-align: left;
+    letter-spacing: 2px;
+    width: 50%;
+    margin: 19px auto;
+    color: #959595;
+}
+
+
+#login-submit {
+    height: 34px;
+    width: 101px;
+    font-family: "Montserrat-SemiBold";
+    letter-spacing: 4px;
+    font-size: 17px;
+    border-radius: 21px;
+    border: 2px solid #39459b;
+    background-color: #8d9bff;
+}
+
+#login-submit:hover {
+  border-color: transparent;
+  background-color:#9dbbf5;
+  transform: scale(1.3);
+  transition: all .9s ease-in-out;
+}
+
+#chngbtn {
+	width: 145px;
+	height: 34px;
+}
+
+#login-submit:focus{
+  outline: none;
+}
+
+
+.close {
+    right: 14px;
+    position: absolute;
+    top: 0;
+    color: black;
+    font-weight: bold;
+    font-size: 39px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+/* dutyRecordCloseView Style*/
+
+#tktbktxt{
+    margin: auto;
+}
+
+
+#datacontent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#amountinputdiv{
+    margin: auto;
+}
+
+#busStateDiv{
+  display: flex;
+  flex-direction: row;
+}
+
+.amountinput{
+  margin: 11px 0px 16px 3px;
+  width: 100px;
+}
+
+.busStateRadioBtn{
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding: 4px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 2px solid #bbbbbb;
+  background-color: #e7e6e7;
+  border-radius: 50%;
+}
+
+.busStateRadioBtn:checked {
+  background-color: #01ff6e;
+}
+
+/* createComplainView */
+#complainText{
+  height: 158px;
+  resize: none;
+  margin: 15px 13px;
+  background: #f2f2f2;
+  color: #212020;
+}
+
+/* createPaysheetView */
+.contentrow{
+  display: flex;
+  padding: 21px 0px;
+}
+
+.rowinputdiv{
+  margin: auto;
+}
+
+.rowinput{
+  width: 99px;
+}
+
+#addnewitem-button {
+    width: 200px;
+    height: 40px;
+}
+
+#trclosebutton{
+  color: aqua;
+  background: black;
+  font-weight: bolder;
+}
+
+#trclosebutton:hover{
+  border-color: #4103ff;
+  color: black;
+  background-color: #ff0808;
+}
+
+/*index view*/
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100vw;
+  max-height: 100vh;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 20px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+.slideImage{
+  vertical-align: middle;
+}
+
+.mySlides {display: none;}

@@ -1,0 +1,126 @@
+CREATE TABLE route ( 
+    routeid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    RouteName TINYTEXT NOT NULL,
+    Description TEXT NOT NULL,
+    RouteNumber TINYTEXT NOT NULL,
+    Distance FLOAT(4, 1) NOT NULL	
+);	
+
+CREATE TABLE timeslottable ( 
+    slotid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    day VARCHAR(15) NOT NULL,
+    time TIME NULL  
+);
+
+CREATE TABLE timeTable ( 
+    tid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    routeid int NOT NULL,
+    FOREIGN KEY(routeid) REFERENCES route(routeid),
+    slotid int,
+    FOREIGN KEY(slotid) REFERENCES timeslottable(slotid),
+    status VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE userlist ( 
+    id int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    designation TINYTEXT NOT NULL, 
+    email LONGTEXT NOT NULL, 
+    password LONGTEXT NOT NULL, 
+    is_deleted TINYTEXT NULL 
+);
+
+CREATE TABLE employee ( 
+    empid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    FirstName TINYTEXT NOT NULL, 
+    LastName TINYTEXT NOT NULL,
+    Birthday DATE NOT NULL, 
+    Gender TINYTEXT NOT NULL,
+    Address TEXT,        
+    Telephone TINYTEXT NOT NULL,
+    NIC TINYTEXT NOT NULL,
+    Designation TINYTEXT NOT NULL, 
+    Email TEXT NULL, 
+    StartDate TIME NOT NULL, 
+    EndDate TIME NULL, 
+    IsDeleted TINYTEXT NULL,
+    Available TINYINT NOT NULL
+):
+
+CREATE TABLE bus ( 
+    busid int(5) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    StartDate DATE NOT NULL, 
+    numplate VARCHAR(10) NOT NULL,
+    State TINYTEXT NOT NULL 
+);
+
+CREATE TABLE ticketBook ( 
+    ticketbookid int(10) PRIMARY KEY NOT NULL, 
+    Tickets int(5) NOT NULL,
+    CurruntNumber int(10) NOT NULL,
+    StartNumber int(10) NOT NULL,
+    EndNumber int(10) NOT NULL,
+    State TINYTEXT NOT NULL
+);
+
+CREATE TABLE dutyRecord ( 
+    dutyid int(15) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    busid int,
+    FOREIGN KEY(busid) REFERENCES bus(busid),
+    routeid int,
+    FOREIGN KEY(routeid) REFERENCES route(routeid),
+    slotid int,
+    FOREIGN KEY(slotid) REFERENCES timeslottable(slotid),
+    ticketbookid int,
+    FOREIGN KEY(ticketbookid) REFERENCES ticketBook(ticketbookid),
+    driverid int,
+    FOREIGN KEY(driverid) REFERENCES employee(empid),
+    conductorid int,
+    FOREIGN KEY(conductorid) REFERENCES employee(empid),
+    Date DATE NOT NULL,
+    DispatchTime TIME NULL,
+    dieselusage int NOT NULL,
+    CashAmount float NULL
+);
+
+CREATE TABLE salary ( 
+    sid int(3) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    Designation TINYTEXT NOT NULL,
+    DaySal int(10) NOT NULL, 
+    HourOt int(10) NOT NULL
+);
+
+CREATE TABLE paysheet ( 
+    paysheetid int(15) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    empid int,
+    FOREIGN KEY(empid) REFERENCES employee(empid),
+    Date DATE NOT NULL,
+    paidFor VARCHAR(10) NOT NULL,
+    designation VARCHAR(20) NOT NULL,
+    employeeName VARCHAR(30) NOT NULL,
+    workingdays int(3) NOT NULL,
+    dailyamount float NOT NULL,
+    basicsalary float NOT NULL,
+    othours int(10) NOT NULL,
+    hourlyotamount float NOT NULL,
+    ottotal float NOT NULL,
+    totalsalary float NOT NULL,
+    bonusNames LONGTEXT NOT NULL, 
+    bonusValues LONGTEXT NOT NULL
+);
+
+CREATE TABLE attendanceRecord ( 
+    aid int(15) AUTO_INCREMENT PRIMARY KEY NOT NULL, 
+    empid int,
+    FOREIGN KEY(empid) REFERENCES employee(empid),
+    Date DATE NOT NULL,
+    ontime TIME NOT NULL,
+    offtime TIME NOT NULL,
+    available VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE workerassign ( 
+    compid int, 
+    FOREIGN KEY(compid) REFERENCES complain(compid),
+    empid int,
+    FOREIGN KEY(empid) REFERENCES employee(empid)
+);	

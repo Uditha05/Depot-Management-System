@@ -1,14 +1,14 @@
 <?php
   include 'class-autoload.inc.php';
 
-    if ($_GET['q'] == "default") {
+    if ($_GET['tktBookId'] == "default") {
       echo "<input type=\"text\" id=\"tktnum\" name=\"tktnum\" disabled value=\"\">";
     }else {
-      $cashierObj = new CashierControl();
-      $results = $cashierObj->showSelectedtktbook($_GET['q']);
-      foreach ($results as $row){
-        echo "<input type=\"text\" id=\"tktnum\" name=\"tktnum\" disabled value=\"{$row['CurruntNumber']}\">";
-      }
+      $factory = new ControllerFactory();
+      $cashierObj = $factory->getController("CASHIER");
+      $results = $cashierObj->showSelectedtktbook($_GET['tktBookId']);
+
+      echo "<input type=\"text\" id=\"tktnum\" name=\"tktnum\" disabled value=\"{$results[0]['CurruntNumber']}\">";
     }
 
 

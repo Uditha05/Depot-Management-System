@@ -11,7 +11,7 @@
   <head>
 
     <meta charset="utf-8">
-    <meta name="description" content="Create a complain for a bus.">
+    <meta name="description" content="closing ticket book for a duty record.">
     <meta name="viewport" content="width-device-width, initial-scaled=1">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,24 +20,24 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <title>
-      Create complain
+      Close Duty Record
     </title>
 
   </head>
-  <body  style="background: #d3e5e5;">
+  <body style="background: #d3e5e5;">
     <header>
       <?php
         include "../includes/headerpart.php";
       ?>
     </header>
 
-    <main class="wrapper"  style="margin: 26px 0px;font-family: 'Montserrat-Regular'!important;">
+    <main class="wrapper" style="margin: 26px 0px;font-family: 'Montserrat-Regular'!important;">
 
         <div class="inner">
             <form id="submitForm">
 
                 <div>
-                    <h1>Create a Complain form</h1>
+                    <h1>Duty Record close form</h1>
                 </div>
 
 
@@ -54,7 +54,7 @@
                         document.getElementById("dutyrecordtable").innerHTML = this.responseText;
                       }
                     };
-                    xhttp.open("GET", "../includes/loadRecords.php?name="+name+"&state=closed", true);
+                    xhttp.open("GET", "../includes/loadRecords.php?name="+name+"&state=returned", true);
                     xhttp.send();
                   }
                 </script>
@@ -72,7 +72,7 @@
                     <?php
                       $factory = new ControllerFactory();
                       $cashierObj = $factory->getController("CASHIER");
-                      $results = $cashierObj->showDutyRecords("closed");
+                      $results = $cashierObj->showDutyRecords("returned");
                       foreach ($results as $row){
                         echo "<tr onclick=\"displySelectedRec( {$row['dutyid']} )\">
                                 <td class=\"Numplate\">{$row['busid']}</td>
@@ -86,6 +86,33 @@
                     <div id="recordDiv" value="notset">
                       <p>Select a Duty record from table</p>
                     </div>
+                    <div>
+                      <div id="tktbknumdiv">
+                        <label for="tktbknuminput">Ticket Book number:</label>
+                        <div id="tktbktxt">
+                          <input type="text" class="tktbkinput" id="tktbknuminput" name="tktbknuminput" disabled value="">
+                        </div>
+                      </div>
+                      <div id="tktnumdiv">
+                        <label id="tktnumlbl" for="tktnum" >Ticket number:</label>
+                        <div id="tktnumtxt">
+                          <input type="text" class="tktbkinput" id="tktnum" name="tktnum" disabled value="">
+                        </div>
+                      </div>
+                      <div id="cashamountdiv">
+                        <label id="cashamountlbl" for="amountinput" >Cash amount(Rs):</label>
+                        <div id="amountinputdiv">
+                          <input type="text" class="amountinput" id="amount" name="amountinput" disabled value="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="busStateDiv">
+                      <label id="busStatuslbl">Bus Status :</label>
+                      <input type="radio" class="busStateRadioBtn" id="park" name="state" value="parked" checked>
+                      <label for="park">Park</label><br>
+                      <input type="radio" class="busStateRadioBtn" id="unavailable" name="state" value="unavailable">
+                      <label for="unavailable">Unavailable</label><br>
                   </div>
                 </div>
                 <script>
@@ -96,35 +123,36 @@
                         document.getElementById("showSelected").innerHTML = this.responseText;
                       }
                     };
-                    xhttp.open("GET", "../includes/showRecord.php?dutyId="+dutyid+"&page=createComplain", true);
+                    xhttp.open("GET", "../includes/showRecord.php?dutyId="+dutyid+"&page=dRecClose", true);
                     xhttp.send();
                   }
                 </script>
-                <div style="display: flex; flex-direction: column;">
-                  <label for="complainText">Enter Complain :</label>
-                  <textarea id="complainText" name="complainText" form="submitForm"></textarea>
-                </div>
 
 
                 <div>
                   <div>
-                    <button class="pageButton" id="submit-button" type="button" name="submit-complain" onclick="submitComplainForm()">Submit</button>
+                    <button class="pageButton" id="submit-button" type="button" name="close-dutyRecord" onclick="closeDutyRecordForm()">Submit</button>
                   </div>
                   <div id="err">
 
                   </div>
                 </div>
                 <script>
-                  function submitComplainForm() {
+                  function closeDutyRecordForm() {
                     var did = document.getElementById("recordDiv").getAttribute('value');
-                    var complainText = document.getElementById("complainText").value;
+                    var bookid = document.getElementById("tktbknuminput").value;
+                    var tktnum = document.getElementById("tktnum").value;
+                    var amount = document.getElementById("amount").value;
+                    var status = document.querySelector('input[name="state"]:checked').value;
 
-                    if ((did=="notset") && (complainText=="")) {
-                      document.getElementById("err").innerHTML = "<p>Select a record and enter complain</p>";
-                    }else if ((did!="notset") && (complainText=="")) {
-                      document.getElementById("err").innerHTML = "<p>Enter complain</p>";
-                    }else if ((did=="notset") && (complainText!="")) {
-                      document.getElementById("err").innerHTML = "<p>Select a record</p>";
+                    if ((did=="notset") && (tktnum=="") && (amount=="")) {
+                      document.getElementById("err").innerHTML = "<p>Select a record and enter ticket number and enter cash amount</p>";
+                    }else if ((did!="notset") && (tktnum=="") && (amount=="")) {
+                      document.getElementById("err").innerHTML = "<p>Enter ticket number and enter cash amount</p>";
+                    }else if ((did!="notset") && (tktnum!="") && (amount=="")) {
+                      document.getElementById("err").innerHTML = "<p>Enter cash amount</p>";
+                    }else if ((did!="notset") && (tktnum=="") && (amount!="")) {
+                      document.getElementById("err").innerHTML = "<p>Enter ticket number</p>";
                     }else{
                       document.getElementById("err").innerHTML = "";
                       xhttp = new XMLHttpRequest();
@@ -133,13 +161,12 @@
                           document.getElementById("showSelected").innerHTML = this.responseText;
                         }
                       };*/
-                      xhttp.open("GET", "../includes/submitForm.php?dutyId="+did+"&complainText="+complainText+"&page=complainCreate", true);
+                      xhttp.open("GET", "../includes/submitForm.php?dutyId="+did+"&bookId="+bookid+"&tktnum="+tktnum+"&amount="+amount+"&busStatus="+status+"&page=dRecClose", true);
                       xhttp.send();
-                      //window.location.reload();
+                      window.location.reload();
                     }
                   }
                 </script>
-
 
             </form>
         </div>
